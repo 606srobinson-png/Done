@@ -1,0 +1,398 @@
+/* ==========================================================
+   1. GLOBAL RESETS & BASE LAYOUT
+   ========================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: radial-gradient(circle at center, #1f1b10 0%, #0a0805 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* ==========================================================
+   2. MAIN CONTAINER CARD
+   ========================================================== */
+.luxury-card {
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(145deg, rgba(26, 24, 18, 0.95) 0%, rgba(12, 11, 8, 0.98) 100%);
+    border: 2px solid #e6c547;
+    border-radius: 24px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), 0 0 30px rgba(230, 197, 71, 0.25);
+}
+
+/* ==========================================================
+   3. BRANDING, HEADINGS & NOTICES
+   ========================================================== */
+.store-branding {
+    margin-bottom: 6px;
+}
+
+.vip-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    color: #000;
+    background: linear-gradient(135deg, #f9e27b 0%, #d4af37 100%);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.store-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fbff00;
+    letter-spacing: 0.8px;
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #f7e8a1;
+    margin-bottom: 2px;
+}
+
+.subtitle {
+    font-size: 11px;
+    color: #bfa858;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.bright-exclusion-notice {
+    background: #ffcc00;
+    color: #000000;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 12px rgba(255, 204, 0, 0.6);
+    text-transform: uppercase;
+}
+
+/* ==========================================================
+   4. SPIN WHEEL CONTAINER & POINTER
+   ========================================================== */
+#wheel-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.wheel-outer-ring {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    background: linear-gradient(135deg, #2a2415 0%, #0d0c09 100%);
+    border-radius: 50%;
+    padding: 10px;
+    border: 5px solid #ffd700;
+    box-shadow: 
+        inset 0 10px 20px rgba(0, 0, 0, 0.9), 
+        0 12px 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 215, 0, 0.4);
+    margin: 0 auto 14px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pointer {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 24px solid #ffcc00;
+    z-index: 50;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.9));
+}
+
+/* ==========================================================
+   5. WHEEL DISK & SLICES
+   ========================================================== */
+.wheel-disk {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 5.5s cubic-bezier(0.15, 0.90, 0.10, 1.0);
+    border: 3px solid #b8860b;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+    background: conic-gradient(
+        #d90429 0deg 60deg,    
+        #ecb427 60deg 120deg,   
+        #2a9d8f 120deg 180deg,  
+        #3a86ff 180deg 240deg,  
+        #7209b7 240deg 300deg,  
+        #f72585 300deg 360deg   
+    );
+}
+
+.wheel-disk.spinning-glow {
+    box-shadow: 0 0 35px #ffd700, inset 0 0 20px rgba(255,255,255,0.8);
+}
+
+.slice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(var(--i) * 60deg + 30deg));
+    text-align: center;
+    pointer-events: none;
+}
+
+.slice .text {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.95);
+    width: 75px;
+}
+
+.wheel-center-cap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42px;
+    height: 42px;
+    background: radial-gradient(circle, #ffffff 0%, #ffd700 50%, #996515 100%);
+    border: 3px solid #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 15px;
+    font-weight: bold;
+    z-index: 40;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.8);
+}
+
+/* ==========================================================
+   6. BRIGHT GLOWING YELLOW BUTTONS & RICH BLACK TEXT
+   ========================================================== */
+button {
+    width: 100%;
+    padding: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    border-radius: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+    margin-bottom: 10px;
+    touch-action: manipulation;
+    letter-spacing: 1.2px;
+}
+
+/* Primary Bright Light-Yellow Button with Rich Black Text */
+.gold-btn {
+    background: linear-gradient(135deg, #fff275 0%, #ffd700 50%, #e6be00 100%);
+    color: #0a0a0a;
+    border: 1px solid #ffffff;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.gold-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(255, 230, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 1);
+    background: linear-gradient(135deg, #ffff8f 0%, #ffe135 50%, #f0c800 100%);
+}
+
+.gold-btn:active {
+    transform: scale(0.98);
+}
+
+/* Secondary High-End Outline Button */
+.outline-btn {
+    background: rgba(15, 14, 10, 0.6);
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+.outline-btn:hover {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: #ffff8f;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+}
+
+.outline-btn:active {
+    background: rgba(255, 215, 0, 0.25);
+}
+
+/* Bright Glowing Yellow Google Review Button with Rich Black Text & Animation */
+.review-btn-animated {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff275 0%, #ffd700 50%, #e6be00 100%);
+    color: #0a0a0a;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 1px solid #ffffff;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 22px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    animation: brightGlowingPulse 2.5s infinite ease-in-out;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.review-btn-animated:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 0 35px rgba(255, 230, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Vibrant Breathing Light Effect Keyframes */
+@keyframes brightGlowingPulse {
+    0% {
+        box-shadow: 0 0 18px rgba(255, 215, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 36px rgba(255, 235, 59, 0.9), inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+    100% {
+        box-shadow: 0 0 18px rgba(255, 215, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================
+   7. RESULTS SECTION, PRIZES & TIMERS
+   ========================================================== */
+.result-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+#win-title.win-style {
+    color: #00ff66;
+    text-shadow: 0 0 15px rgba(0, 255, 102, 0.6);
+}
+
+#win-title.lose-style {
+    color: #ff1a1a;
+    text-shadow: 0 0 15px rgba(255, 26, 26, 0.6);
+}
+
+.prize-highlight {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #ffd700;
+    margin: 8px 0;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.timer-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #333;
+}
+
+.timer-box p {
+    font-size: 11px;
+    color: #ccc;
+    margin-bottom: 3px;
+}
+
+#countdown {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ff4d4d;
+    letter-spacing: 1px;
+}
+
+.security-code {
+    font-size: 13px;
+    background: #111;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    margin-bottom: 12px;
+}
+
+.security-code strong {
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================
+   8. NOTICES, CARDS & DISCLAIMERS
+   ========================================================== */
+.info-highlight-card {
+    margin-top: 8px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.warning-card {
+    background: rgba(255, 77, 77, 0.15);
+    border: 1.5px solid #ff4d4d;
+}
+
+.age-card {
+    background: rgba(255, 215, 0, 0.12);
+    border: 1.5px solid #ffd700;
+}
+
+.timer-warning {
+    font-size: 11px;
+    color: #ff8080;
+    font-weight: 700;
+}
+
+.age-disclaimer {
+    font-size: 11px;
+    color: #ffe680;
+    font-weight: 700;
+}

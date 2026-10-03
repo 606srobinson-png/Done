@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DFW Smoke & Vapor Shop | VIP Spin & Win</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="Spinwheel.css">
+</head>
+<body>
+
+    <div class="luxury-card">
+        <!-- Store Branding Header -->
+        <div class="store-branding">
+            <span class="vip-badge">★ EXCLUSIVE VIP REWARDS ★</span>
+            <h2 class="store-title">DFW SMOKE & VAPOR SHOP</h2>
+        </div>
+
+        <h1 class="main-heading">SPIN & WIN</h1>
+        <p class="subtitle">Scan, Spin & Save Instantly In-Store</p>
+
+        <!-- Bright Notice -->
+        <div class="bright-exclusion-notice">
+            ⚠️ <strong>NOTICE:</strong> Offer will not apply on cigarettes, cigars, and all tobacco products.
+        </div>
+      
+
+        <!-- Wheel Section -->
+        <div id="wheel-section">
+            <div class="wheel-outer-ring">
+                <div class="pointer"></div>
+                
+                <div id="wheel" class="wheel-disk">
+                    <div class="slice" style="--i: 0;"><span class="text">30% OFF</span></div>
+                    <div class="slice" style="--i: 1;"><span class="text">Better Luck Next Time</span></div>
+                    <div class="slice" style="--i: 2;"><span class="text">40% OFF</span></div>
+                    <div class="slice" style="--i: 3;"><span class="text">20% OFF</span></div>
+                    <div class="slice" style="--i: 4;"><span class="text">10% OFF</span></div>
+                    <div class="slice" style="--i: 5;"><span class="text">50% OFF</span></div>
+                </div>
+
+                <div class="wheel-center-cap">★</div>
+            </div>
+
+            <button id="spin-btn" class="gold-btn">SPIN THE WHEEL</button>
+            <button id="view-prize-btn" class="outline-btn">VIEW LAST ACTIVE PRIZE</button>
+             <a href="https://g.page/r/CZ4AtBFi4qMBEBE/review" target="_blank" class="review-btn-animated">
+                ⭐ Take a Moment to Leave Us a Google Review! ⭐
+            </a>
+        </div>
+           
+        <!-- Result Section -->
+        <div id="result-section" class="hidden">
+            <h2 id="win-title" class="result-title">YOU WON!</h2>
+            <div id="prize-display" class="prize-highlight">Prize Name</div>
+            
+            <div class="timer-box">
+                <p>Show cashier before timer expires:</p>
+                <div id="countdown">10:00</div>
+            </div>
+
+            <div class="security-code">
+                Verification Code: <strong id="code-display">DFW-XXXX</strong>
+            </div>
+
+            <!-- Animated Google Review Button -->
+           
+
+            <button id="back-to-wheel-btn" class="outline-btn">BACK TO WHEEL</button>
+             
+            <a href="https://g.page/r/CZ4AtBFi4qMBEBE/review" target="_blank" class="review-btn-animated">
+                ⭐ Take a Moment to Leave Us a Google Review! ⭐
+            </a>
+        </div>
+
+        <!-- High-Contrast Readable Highlight Cards -->
+        <div class="info-highlight-card warning-card">
+            <p class="timer-warning">🔒 <strong>KEEP TAB OPEN:</strong> Active prizes expire strictly in 10 minutes.</p>
+        </div>
+
+        <div class="info-highlight-card age-card">
+            <p class="age-disclaimer">🔞 <strong>AGE RESTRICTION:</strong> Must be 21+ with valid ID. Valid only at DFW Smoke & Vapor Shop locations.</p>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="spin-sound" src="victorabdo-spin-232536.mp3" preload="auto"></audio>
+    <audio id="win-sound" src="freesound_community-woo-hoo-82843.mp3" preload="auto"></audio>
+    <audio id="lose-sound" src="universfield-sad-trumpet-278822.mp3" preload="auto"></audio>
+
+    <script src="SpinWheelJava.js"></script>
+</body>
+</html>
